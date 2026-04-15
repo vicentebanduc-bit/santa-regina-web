@@ -52,9 +52,8 @@ function Nav() {
     <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 1000, background: transparent ? "transparent" : `rgba(11,22,40,0.97)`, backdropFilter: transparent ? "none" : "blur(20px)", borderBottom: transparent ? "none" : `1px solid ${AL}0.12)`, transition: "all 0.5s ease" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 32px", display: "flex", alignItems: "center", justifyContent: "space-between", height: transparent ? 76 : 64, transition: "height 0.5s ease" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10, cursor: "pointer" }} onClick={() => go("inicio")}>
-          <div style={{ width: 36, height: 36, border: `1.5px solid ${ACCENT}`, borderRadius: "50%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
-            <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 13, fontWeight: 600, color: ACCENT, letterSpacing: 1, lineHeight: 1 }}>SR</span>
-            <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 5, color: ACCENT, letterSpacing: 0.5, textTransform: "uppercase", lineHeight: 1, marginTop: 1 }}>Inversiones</span>
+          <div style={{ width: 36, height: 36, border: `1.5px solid ${ACCENT}`, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 14, fontWeight: 600, color: ACCENT, letterSpacing: 1 }}>SR</span>
           </div>
           <div>
             <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 18, fontWeight: 600, color: "#fff", letterSpacing: 2, lineHeight: 1.1 }}>SANTA REGINA</div>
@@ -354,7 +353,7 @@ function PageServicios() {
     },
     {
       tag: "Inversión directa", title: "Negocios Directos", desc: "Deuda privada originada in house, coinversiones inmobiliarias, venture capital y otros.", accent: "#C2845B",
-      bullets: ["Deuda Privada", "Garantía Hipoteca y Leasing"],
+      bullets: ["Deuda Privada", "Crédito con Garantía", "Crédito Formato Leasing"],
     },
   ];
 
@@ -437,7 +436,7 @@ const PROPERTIES = [
       { label: "Oficinas", value: "420 m² (2 pisos)" },
       { label: "Altura al hombro", value: "~8,5 m" },
     ],
-    images: ["/ElPinar1.JPG", "/ElPinar2.JPG", "/ElPinar3.JPG", "/ElPinar4.JPG", "/ElPinar5.JPG", "/ElPinar6.JPG", "/ElPinar7.JPG", "/ElPinar8.JPG"],
+    images: ["/ElPinar1.jpg", "/ElPinar2.jpg", "/ElPinar3.jpg", "/ElPinar4.jpg", "/ElPinar5.jpg", "/ElPinar6.jpg", "/ElPinar7.jpg", "/ElPinar8.jpg"],
     brochure: "/Brochure El Pinar 16032026.pdf",
     areaNum: 4250, units: "1 galpón", vacantes: 1,
     coords: { lat: -33.4916, lng: -70.6276, gmaps: "https://www.google.com/maps/place/El+Pinar+251,+San+Joaqu%C3%ADn,+Regi%C3%B3n+Metropolitana/@-33.4916202,-70.627613,15z" },
@@ -458,7 +457,7 @@ const PROPERTIES = [
     id: "c2", name: "Bodega Lo Espejo 2", location: "Av. Lo Espejo 02360, San Bernardo", category: "bodega", status: "disponible", area: "11.813 m²", areaNum: 11813, units: "37 bodegas", vacantes: 4,
     coords: { lat: -33.5941, lng: -70.7025, gmaps: "https://www.google.com/maps/search/Av+Lo+Espejo+02360+San+Bernardo+Santiago" },
     availableUnits: [
-      { id: "G-14", m2: 1000, images: ["/G14-1.JPG", "/G14-2.JPG"] },
+      { id: "G-14", m2: 1000, images: ["/G14-1.jpg", "/G14-2.jpg"] },
       { id: "G-12", m2: 40 },
       { id: "Of 5", m2: 12, images: ["/Oficina5-1.jpg", "/Oficina5-2.jpg"] },
       { id: "Of 6", m2: 36, images: ["/Oficina6-1.jpg", "/Oficina6-2.jpg"] },
@@ -476,6 +475,15 @@ const PROPERTIES = [
       { id: "Local 1", m2: 429 },
     ],
   },
+  {
+    id: "c10", name: "Locales La Marina", location: "Av. La Marina 1495, Vitacura", category: "local", status: "disponible", area: "300 m²", areaNum: 300, units: "6 locales", vacantes: 1,
+    coords: { lat: -33.3892, lng: -70.5701, gmaps: "https://www.google.com/maps/search/Av+La+Marina+1495+Vitacura+Santiago" },
+    availableUnits: [
+      { id: "Local 6", m2: 55.75 },
+    ],
+  },
+  { id: "c11", name: "Locales Bustamante", location: "Bustamante 1007, Providencia", category: "local", status: "ocupado", area: "627 m²", areaNum: 627, units: "8 locales", coords: { lat: -33.4448, lng: -70.6327, gmaps: "https://www.google.com/maps/search/Bustamante+1007+Providencia+Santiago" } },
+  { id: "c12", name: "Locales Irrarázaval", location: "Irrarázaval 4971, Ñuñoa", category: "local", status: "ocupado", area: "320 m²", areaNum: 320, units: "6 locales", coords: { lat: -33.4558, lng: -70.5942, gmaps: "https://www.google.com/maps/search/Irarrazaval+4971+Nunoa+Santiago" } },
 ];
 
 /* ─── REUSABLE: Image Lightbox ─── */
@@ -866,8 +874,8 @@ function PageBodegas() {
                         </div>
                       ))}
                     </div>
-                    {/* Brochure button */}
-                    <div style={{ marginTop: "auto" }}>
+                    {/* Brochure button + Map */}
+                    <div style={{ marginTop: "auto", display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
                       <a href={featured.brochure} target="_blank" rel="noopener noreferrer" style={{
                         display: "inline-flex", alignItems: "center", gap: 8,
                         fontFamily: "'DM Sans', sans-serif", fontSize: 13, letterSpacing: 1.5, textTransform: "uppercase",
@@ -879,6 +887,20 @@ function PageBodegas() {
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14,2 14,8 20,8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /></svg>
                         Descargar brochure
                       </a>
+                      {featured.coords && (
+                        <a href={featured.coords.gmaps} target="_blank" rel="noopener noreferrer" style={{
+                          display: "inline-flex", alignItems: "center", gap: 6,
+                          fontFamily: "'DM Sans', sans-serif", fontSize: 11, letterSpacing: 1,
+                          padding: "10px 18px", background: "transparent", color: "#999",
+                          border: "1px solid rgba(0,0,0,0.1)", textDecoration: "none", transition: "all 0.2s",
+                        }}
+                          onMouseEnter={e => { e.currentTarget.style.borderColor = `rgba(107,158,206,0.3)`; e.currentTarget.style.color = ACCENT; }}
+                          onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(0,0,0,0.1)"; e.currentTarget.style.color = "#999"; }}
+                        >
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
+                          Ver mapa
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -909,7 +931,7 @@ function PageBodegas() {
               {category === "bodega" ? "Centro de Bodegas" : "Locales Comerciales"} — {filtered.length + (showFeatured && featured ? 1 : 0)} {filtered.length + (showFeatured && featured ? 1 : 0) === 1 ? "activo" : "activos"} {availability !== "todos" ? (availability === "disponible" ? "disponibles" : "ocupados") : "en portafolio"}
             </div>
             <div style={{ fontSize: 12, color: "#bbb", fontFamily: "'DM Sans', sans-serif" }}>
-              Portafolio total: ~44.861 m² · 126 unidades · 9 centros
+              Portafolio total: ~46.108 m² · 146 unidades · 12 centros
             </div>
           </div>
         </div>
@@ -1019,7 +1041,7 @@ function PageContacto() {
 /* ═══════════════════════════════════════════
    APP ROUTER
    ═══════════════════════════════════════════ */
-export default function SantaRegina() {
+export default function App() {
   const [page, setPage] = useState("inicio");
   const [fade, setFade] = useState(true);
 
