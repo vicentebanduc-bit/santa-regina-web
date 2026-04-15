@@ -1,16 +1,74 @@
-# React + Vite
+# Santa Regina - Family Office
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sitio web institucional para Santa Regina, especializado en gestión patrimonial, arriendos inmobiliarios y asesoría financiera.
 
-Currently, two official plugins are available:
+Construido con **React** + **Vite** para máximo rendimiento.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Características
 
-## React Compiler
+- Navegación fluida entre secciones
+- Galería de propiedades inmobiliarias interactiva
+- Mapa de ubicaciones con Leaflet
+- Diseño responsive y moderno
+- Optimizado para Vercel
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📦 Instalación
 
-## Expanding the ESLint configuration
+```bash
+npm install
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🔨 Desarrollo
+
+```bash
+npm run dev
+```
+
+Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
+
+## 🏗️ Build para Producción
+
+```bash
+npm run build
+```
+
+## 👀 Preview
+
+```bash
+npm run preview
+```
+
+## 🚀 Desplegar en Vercel
+
+1. Conecta tu repositorio a Vercel
+2. Vercel detectará automáticamente que es un proyecto Vite
+3. El build y deployment se ejecutarán automáticamente
+
+### Variables de Entorno (si aplica)
+
+Ninguna variable de entorno es requerida por defecto.
+
+## 📂 Estructura del Proyecto
+
+```
+src/
+├── App.jsx          # Componente principal con ruteo
+├── main.jsx         # Entry point
+├── App.css          # Estilos globales
+├── index.css        # Reset CSS
+└── assets/          # Assets estáticos
+
+public/
+└── (imágenes, PDFs, favicon)
+```
+
+## 🛠️ Tecnologías
+
+- **React 19** - Framework UI
+- **Vite 8** - Build tool
+- **CSS-in-JS** - Estilos en línea optimizados
+- **Intersection Observer** - Animaciones scroll
+
+## 📄 Licencia
+
+Todos los derechos reservados © Santa Regina
