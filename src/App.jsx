@@ -216,8 +216,8 @@ function PageInicio() {
         <div style={{ position: "absolute", top: "10%", right: "5%", width: 500, height: 500, borderRadius: "50%", background: `radial-gradient(circle, ${AL}0.06) 0%, transparent 70%)` }} />
         <div style={{ maxWidth: 900, margin: "0 auto", padding: "120px 32px 80px", textAlign: "center", position: "relative", zIndex: 1 }}>
           <div style={{ opacity: loaded ? 1 : 0, transform: loaded ? "translateY(0)" : "translateY(20px)", transition: "all 1s cubic-bezier(0.16,1,0.3,1) 0.2s" }}>
-            <div style={{ height: 160, width: 160, margin: "0 auto 32px", overflow: "hidden", borderRadius: "50%", background: "rgba(255,255,255,0.95)", padding: 12, boxShadow: "0 0 0 1px rgba(107,158,206,0.3), 0 8px 32px rgba(0,0,0,0.3)" }}>
-              <img src="/InversionesSantaRegina.jpeg" alt="Inversiones Santa Regina" style={{ height: "100%", width: "100%", objectFit: "contain", display: "block" }} />
+            <div style={{ height: 200, width: 200, margin: "0 auto 32px", overflow: "hidden", borderRadius: "50%", background: "#fff", boxShadow: "0 0 0 1.5px rgba(107,158,206,0.35), 0 12px 40px rgba(0,0,0,0.35)", flexShrink: 0 }}>
+              <img src="/InversionesSantaRegina.jpeg" alt="Inversiones Santa Regina" style={{ width: "130%", height: "130%", objectFit: "contain", display: "block", marginLeft: "-15%", marginTop: "-10%" }} />
             </div>
           </div>
           <div style={{ opacity: loaded ? 1 : 0, transform: loaded ? "translateY(0)" : "translateY(30px)", transition: "all 1s cubic-bezier(0.16,1,0.3,1) 0.4s" }}>
