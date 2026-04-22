@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, createContext, useContext } from "react";
+import { createPortal } from "react-dom";
 
 const RouterCtx = createContext({ page: "inicio", go: () => {} });
 
@@ -52,8 +53,8 @@ function Nav() {
     <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 1000, background: transparent ? "transparent" : `rgba(11,22,40,0.97)`, backdropFilter: transparent ? "none" : "blur(20px)", borderBottom: transparent ? "none" : `1px solid ${AL}0.12)`, transition: "all 0.5s ease" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 32px", display: "flex", alignItems: "center", justifyContent: "space-between", height: transparent ? 76 : 64, transition: "height 0.5s ease" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10, cursor: "pointer" }} onClick={() => go("inicio")}>
-          <div style={{ width: 40, height: 40, borderRadius: "50%", overflow: "hidden", border: `1.5px solid ${AL}0.25)`, flexShrink: 0 }}>
-            <img src="/InversionesSantaRegina.jpg" alt="SR" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          <div style={{ height: 40, width: 40, flexShrink: 0, overflow: "hidden", borderRadius: 2 }}>
+            <img src="/InversionesSantaRegina.jpeg" alt="Inversiones Santa Regina" style={{ height: "100%", width: "100%", objectFit: "contain", display: "block" }} />
           </div>
           <div>
             <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 9, color: `${AL}0.8)`, letterSpacing: 3, textTransform: "uppercase", lineHeight: 1.2 }}>Inversiones</div>
@@ -109,8 +110,8 @@ function Footer() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 48, marginBottom: 48 }}>
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-              <div style={{ width: 36, height: 36, borderRadius: "50%", overflow: "hidden", border: `1px solid ${AL}0.2)`, flexShrink: 0 }}>
-                <img src="/InversionesSantaRegina.jpg" alt="SR" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+              <div style={{ height: 36, width: 36, flexShrink: 0, overflow: "hidden", borderRadius: 2 }}>
+                <img src="/InversionesSantaRegina.jpeg" alt="SR" style={{ height: "100%", width: "100%", objectFit: "contain", display: "block" }} />
               </div>
               <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 16, color: "#fff", letterSpacing: 1.5 }}>SANTA REGINA</span>
             </div>
@@ -215,8 +216,8 @@ function PageInicio() {
         <div style={{ position: "absolute", top: "10%", right: "5%", width: 500, height: 500, borderRadius: "50%", background: `radial-gradient(circle, ${AL}0.06) 0%, transparent 70%)` }} />
         <div style={{ maxWidth: 900, margin: "0 auto", padding: "120px 32px 80px", textAlign: "center", position: "relative", zIndex: 1 }}>
           <div style={{ opacity: loaded ? 1 : 0, transform: loaded ? "translateY(0)" : "translateY(20px)", transition: "all 1s cubic-bezier(0.16,1,0.3,1) 0.2s" }}>
-            <div style={{ width: 88, height: 88, borderRadius: "50%", overflow: "hidden", border: `1.5px solid ${AL}0.3)`, margin: "0 auto 32px", flexShrink: 0 }}>
-              <img src="/InversionesSantaRegina.jpg" alt="Inversiones Santa Regina" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+            <div style={{ height: 100, width: 100, margin: "0 auto 32px", overflow: "hidden", borderRadius: 4 }}>
+              <img src="/InversionesSantaRegina.jpeg" alt="Inversiones Santa Regina" style={{ height: "100%", width: "100%", objectFit: "contain", display: "block" }} />
             </div>
           </div>
           <div style={{ opacity: loaded ? 1 : 0, transform: loaded ? "translateY(0)" : "translateY(30px)", transition: "all 1s cubic-bezier(0.16,1,0.3,1) 0.4s" }}>
@@ -476,8 +477,8 @@ const PROPERTIES = [
     ],
   },
   {
-    id: "c10", name: "Locales La Marina", location: "Av. La Marina 1495, Vitacura", category: "local", status: "disponible", area: "300 m²", areaNum: 300, units: "6 locales", vacantes: 1,
-    coords: { lat: -33.3892, lng: -70.5701, gmaps: "https://www.google.com/maps/search/Av+La+Marina+1495+Vitacura+Santiago" },
+    id: "c10", name: "Strip Center La Marina", location: "Av. La Marina 1495, San Miguel", category: "local", status: "disponible", area: "300 m²", areaNum: 300, units: "6 locales", vacantes: 1,
+    coords: { lat: -33.4968, lng: -70.6507, gmaps: "https://www.google.com/maps/search/Av+La+Marina+1495+San+Miguel+Santiago" },
     availableUnits: [
       { id: "Local 6", m2: 55.75 },
     ],
@@ -490,18 +491,21 @@ const PROPERTIES = [
 function Lightbox({ images, index, onClose }) {
   const [current, setCurrent] = useState(index);
   useEffect(() => { const h = (e) => { if (e.key === "Escape") onClose(); if (e.key === "ArrowRight") setCurrent(c => (c + 1) % images.length); if (e.key === "ArrowLeft") setCurrent(c => (c - 1 + images.length) % images.length); }; window.addEventListener("keydown", h); return () => window.removeEventListener("keydown", h); }, []);
-  return (
-    <div onClick={onClose} style={{ position: "fixed", inset: 0, zIndex: 9999, background: "rgba(0,0,0,0.88)", display: "flex", alignItems: "center", justifyContent: "center", cursor: "zoom-out", backdropFilter: "blur(8px)" }}>
-      <button onClick={onClose} style={{ position: "absolute", top: 20, right: 24, background: "none", border: "none", cursor: "pointer", color: "#fff", fontSize: 28, lineHeight: 1, fontWeight: 300 }}>✕</button>
+  return createPortal(
+    <div onClick={onClose} style={{ position: "fixed", inset: 0, zIndex: 99999, background: "rgba(0,0,0,0.92)", display: "flex", alignItems: "center", justifyContent: "center", cursor: "zoom-out", backdropFilter: "blur(12px)" }}>
+      <button onClick={onClose} style={{ position: "absolute", top: 20, right: 24, background: "none", border: "none", cursor: "pointer", color: "#fff", fontSize: 32, lineHeight: 1, fontWeight: 300, zIndex: 1 }}>✕</button>
       {images.length > 1 && (
         <>
-          <button onClick={e => { e.stopPropagation(); setCurrent((current - 1 + images.length) % images.length); }} style={{ position: "absolute", left: 20, background: "rgba(255,255,255,0.1)", border: "none", color: "#fff", width: 44, height: 44, cursor: "pointer", fontSize: 20, display: "flex", alignItems: "center", justifyContent: "center" }}>‹</button>
-          <button onClick={e => { e.stopPropagation(); setCurrent((current + 1) % images.length); }} style={{ position: "absolute", right: 20, background: "rgba(255,255,255,0.1)", border: "none", color: "#fff", width: 44, height: 44, cursor: "pointer", fontSize: 20, display: "flex", alignItems: "center", justifyContent: "center" }}>›</button>
+          <button onClick={e => { e.stopPropagation(); setCurrent((current - 1 + images.length) % images.length); }} style={{ position: "absolute", left: 20, background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.15)", color: "#fff", width: 48, height: 48, cursor: "pointer", fontSize: 22, display: "flex", alignItems: "center", justifyContent: "center" }}>‹</button>
+          <button onClick={e => { e.stopPropagation(); setCurrent((current + 1) % images.length); }} style={{ position: "absolute", right: 20, background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.15)", color: "#fff", width: 48, height: 48, cursor: "pointer", fontSize: 22, display: "flex", alignItems: "center", justifyContent: "center" }}>›</button>
         </>
       )}
-      <img onClick={e => e.stopPropagation()} src={images[current]} alt="" style={{ maxWidth: "90vw", maxHeight: "85vh", objectFit: "contain", cursor: "default" }} />
-      {images.length > 1 && <div style={{ position: "absolute", bottom: 20, color: "rgba(255,255,255,0.5)", fontSize: 13, fontFamily: "'DM Sans', sans-serif" }}>{current + 1} / {images.length}</div>}
-    </div>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 16, padding: "0 80px" }}>
+        <img onClick={e => e.stopPropagation()} src={images[current]} alt="" style={{ maxWidth: "88vw", maxHeight: "80vh", objectFit: "contain", cursor: "default", display: "block" }} />
+        {images.length > 1 && <div style={{ color: "rgba(255,255,255,0.45)", fontSize: 13, fontFamily: "'DM Sans', sans-serif" }}>{current + 1} / {images.length}</div>}
+      </div>
+    </div>,
+    document.body
   );
 }
 
@@ -567,7 +571,7 @@ function PropertyCard({ prop }) {
         <div style={{ fontSize: 13, color: "#aaa", fontFamily: "'DM Sans', sans-serif", fontWeight: 300, marginBottom: 20 }}>{prop.location}</div>
         <div style={{ marginTop: "auto", paddingTop: 16, borderTop: "1px solid rgba(0,0,0,0.04)", display: "flex", gap: 20, flexWrap: "wrap" }}>
           <div>
-            <div style={{ fontSize: 10, letterSpacing: 1.5, textTransform: "uppercase", color: "#ccc", fontFamily: "'DM Sans', sans-serif", marginBottom: 2 }}>Superficie</div>
+            <div style={{ fontSize: 10, letterSpacing: 1.5, textTransform: "uppercase", color: "#ccc", fontFamily: "'DM Sans', sans-serif", marginBottom: 2 }}>Superficie Total</div>
             <div style={{ fontSize: 15, fontWeight: 600, color: "#0A0F1C", fontFamily: "'DM Sans', sans-serif" }}>{prop.area}</div>
           </div>
           <div>
