@@ -10,6 +10,8 @@ const DARK_BG = "#0B1628";
 const DARK_MID = "#0F1D33";
 const DARK_LIGHT = "#16263E";
 
+
+
 function useInView(th = 0.12) {
   const ref = useRef(null);
   const [v, setV] = useState(false);
@@ -53,8 +55,8 @@ function Nav() {
     <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 1000, background: transparent ? "transparent" : `rgba(11,22,40,0.97)`, backdropFilter: transparent ? "none" : "blur(20px)", borderBottom: transparent ? "none" : `1px solid ${AL}0.12)`, transition: "all 0.5s ease" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 32px", display: "flex", alignItems: "center", justifyContent: "space-between", height: transparent ? 76 : 64, transition: "height 0.5s ease" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10, cursor: "pointer" }} onClick={() => go("inicio")}>
-          <div style={{ height: 44, width: 44, flexShrink: 0, overflow: "hidden", borderRadius: "50%", background: "#fff", padding: 3, boxShadow: "0 0 0 1px rgba(107,158,206,0.25)" }}>
-            <img src="/InversionesSantaRegina.jpeg" alt="Inversiones Santa Regina" style={{ height: "100%", width: "100%", objectFit: "contain", display: "block" }} />
+          <div style={{ height: 40, flexShrink: 0, background: "#fff", borderRadius: 3, padding: "2px 6px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <img src="/InversionesSantaRegina.jpeg" alt="Inversiones Santa Regina" style={{ height: 36, width: "auto", display: "block", objectFit: "contain" }} />
           </div>
           <div>
             <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 9, color: `${AL}0.8)`, letterSpacing: 3, textTransform: "uppercase", lineHeight: 1.2 }}>Inversiones</div>
@@ -110,8 +112,8 @@ function Footer() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 48, marginBottom: 48 }}>
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-              <div style={{ height: 36, width: 36, flexShrink: 0, overflow: "hidden", borderRadius: 2 }}>
-                <img src="/InversionesSantaRegina.jpeg" alt="SR" style={{ height: "100%", width: "100%", objectFit: "contain", display: "block" }} />
+              <div style={{ height: 36, flexShrink: 0, background: "#fff", borderRadius: 3, padding: "2px 5px", display: "flex", alignItems: "center" }}>
+                <img src="/InversionesSantaRegina.jpeg" alt="SR" style={{ height: 32, width: "auto", display: "block", objectFit: "contain" }} />
               </div>
               <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 16, color: "#fff", letterSpacing: 1.5 }}>SANTA REGINA</span>
             </div>
@@ -216,8 +218,10 @@ function PageInicio() {
         <div style={{ position: "absolute", top: "10%", right: "5%", width: 500, height: 500, borderRadius: "50%", background: `radial-gradient(circle, ${AL}0.06) 0%, transparent 70%)` }} />
         <div style={{ maxWidth: 900, margin: "0 auto", padding: "120px 32px 80px", textAlign: "center", position: "relative", zIndex: 1 }}>
           <div style={{ opacity: loaded ? 1 : 0, transform: loaded ? "translateY(0)" : "translateY(20px)", transition: "all 1s cubic-bezier(0.16,1,0.3,1) 0.2s" }}>
-            <div style={{ height: 200, width: 200, margin: "0 auto 32px", overflow: "hidden", borderRadius: "50%", background: "#fff", boxShadow: "0 0 0 1.5px rgba(107,158,206,0.35), 0 12px 40px rgba(0,0,0,0.35)", flexShrink: 0 }}>
-              <img src="/InversionesSantaRegina.jpeg" alt="Inversiones Santa Regina" style={{ width: "130%", height: "130%", objectFit: "contain", display: "block", marginLeft: "-15%", marginTop: "-10%" }} />
+            <div style={{ margin: "0 auto 40px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <div style={{ background: "#ffffff", borderRadius: 8, padding: "20px 28px", boxShadow: "0 4px 32px rgba(0,0,0,0.25), 0 0 0 1px rgba(107,158,206,0.2)" }}>
+                <img src="/InversionesSantaRegina.jpeg" alt="Inversiones Santa Regina" style={{ height: 160, width: "auto", display: "block", objectFit: "contain" }} />
+              </div>
             </div>
           </div>
           <div style={{ opacity: loaded ? 1 : 0, transform: loaded ? "translateY(0)" : "translateY(30px)", transition: "all 1s cubic-bezier(0.16,1,0.3,1) 0.4s" }}>
