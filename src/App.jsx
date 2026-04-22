@@ -55,9 +55,7 @@ function Nav() {
     <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 1000, background: transparent ? "transparent" : `rgba(11,22,40,0.97)`, backdropFilter: transparent ? "none" : "blur(20px)", borderBottom: transparent ? "none" : `1px solid ${AL}0.12)`, transition: "all 0.5s ease" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 32px", display: "flex", alignItems: "center", justifyContent: "space-between", height: transparent ? 76 : 64, transition: "height 0.5s ease" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10, cursor: "pointer" }} onClick={() => go("inicio")}>
-          <div style={{ height: 40, flexShrink: 0, background: "#fff", borderRadius: 3, padding: "2px 6px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <img src="/InversionesSantaRegina.jpeg" alt="Inversiones Santa Regina" style={{ height: 36, width: "auto", display: "block", objectFit: "contain" }} />
-          </div>
+          <img src="/InversionesSantaRegina_white.png" alt="Inversiones Santa Regina" style={{ height: 38, width: "auto", display: "block", flexShrink: 0 }} />
           <div>
             <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 9, color: `${AL}0.8)`, letterSpacing: 3, textTransform: "uppercase", lineHeight: 1.2 }}>Inversiones</div>
             <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 18, fontWeight: 600, color: "#fff", letterSpacing: 2, lineHeight: 1.1 }}>SANTA REGINA</div>
@@ -112,9 +110,7 @@ function Footer() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 48, marginBottom: 48 }}>
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-              <div style={{ height: 36, flexShrink: 0, background: "#fff", borderRadius: 3, padding: "2px 5px", display: "flex", alignItems: "center" }}>
-                <img src="/InversionesSantaRegina.jpeg" alt="SR" style={{ height: 32, width: "auto", display: "block", objectFit: "contain" }} />
-              </div>
+              <img src="/InversionesSantaRegina_white.png" alt="SR" style={{ height: 34, width: "auto", display: "block", flexShrink: 0 }} />
               <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 16, color: "#fff", letterSpacing: 1.5 }}>SANTA REGINA</span>
             </div>
             <p style={{ fontSize: 13, color: "rgba(255,255,255,0.35)", lineHeight: 1.7, fontFamily: "'DM Sans', sans-serif", fontWeight: 300, maxWidth: 260 }}>Patrimonio construido activo por activo, con una visión de largo plazo.</p>
@@ -219,18 +215,9 @@ function PageInicio() {
         <div style={{ maxWidth: 900, margin: "0 auto", padding: "120px 32px 80px", textAlign: "center", position: "relative", zIndex: 1 }}>
           <div style={{ opacity: loaded ? 1 : 0, transform: loaded ? "translateY(0)" : "translateY(20px)", transition: "all 1s cubic-bezier(0.16,1,0.3,1) 0.2s" }}>
             <div style={{ margin: "0 auto 40px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <div style={{
-                width: 224, height: 224, borderRadius: "50%",
-                background: "#ffffff",
-                boxShadow: "0 4px 32px rgba(0,0,0,0.3), 0 0 0 1.5px rgba(107,158,206,0.25)",
-                display: "flex", alignItems: "center", justifyContent: "center",
-                paddingTop: 26, paddingBottom: 10, paddingLeft: 18, paddingRight: 18,
-                flexShrink: 0, overflow: "hidden"
-              }}>
-                <img src="/InversionesSantaRegina.jpeg" alt="Inversiones Santa Regina" style={{
-                  width: "100%", height: "100%", objectFit: "contain", display: "block"
-                }} />
-              </div>
+              <img src="/InversionesSantaRegina_white.png" alt="Inversiones Santa Regina" style={{
+                height: 180, width: "auto", display: "block", margin: "0 auto"
+              }} />
             </div>
           </div>
           <div style={{ opacity: loaded ? 1 : 0, transform: loaded ? "translateY(0)" : "translateY(30px)", transition: "all 1s cubic-bezier(0.16,1,0.3,1) 0.4s" }}>
