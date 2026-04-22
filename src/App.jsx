@@ -219,8 +219,16 @@ function PageInicio() {
         <div style={{ maxWidth: 900, margin: "0 auto", padding: "120px 32px 80px", textAlign: "center", position: "relative", zIndex: 1 }}>
           <div style={{ opacity: loaded ? 1 : 0, transform: loaded ? "translateY(0)" : "translateY(20px)", transition: "all 1s cubic-bezier(0.16,1,0.3,1) 0.2s" }}>
             <div style={{ margin: "0 auto 40px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <div style={{ background: "#ffffff", borderRadius: 8, padding: "10px 14px", boxShadow: "0 4px 32px rgba(0,0,0,0.25), 0 0 0 1px rgba(107,158,206,0.2)", overflow: "hidden" }}>
-                <img src="/InversionesSantaRegina.jpeg" alt="Inversiones Santa Regina" style={{ height: 180, width: "auto", display: "block", objectFit: "cover", objectPosition: "center 10%" }} />
+              <div style={{
+                width: 220, height: 220, borderRadius: "50%",
+                background: "#ffffff",
+                boxShadow: "0 4px 32px rgba(0,0,0,0.3), 0 0 0 1.5px rgba(107,158,206,0.25)",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                padding: 18, flexShrink: 0, overflow: "hidden"
+              }}>
+                <img src="/InversionesSantaRegina.jpeg" alt="Inversiones Santa Regina" style={{
+                  width: "100%", height: "100%", objectFit: "contain", display: "block"
+                }} />
               </div>
             </div>
           </div>
