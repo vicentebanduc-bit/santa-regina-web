@@ -216,7 +216,7 @@ function PageInicio() {
           <div style={{ opacity: loaded ? 1 : 0, transform: loaded ? "translateY(0)" : "translateY(20px)", transition: "all 1s cubic-bezier(0.16,1,0.3,1) 0.2s" }}>
             <div style={{ margin: "0 auto 40px", display: "flex", alignItems: "center", justifyContent: "center" }}>
               <img src="/InversionesSantaRegina_white.png" alt="Inversiones Santa Regina" style={{
-                height: 240, width: "auto", display: "block", margin: "0 auto"
+                height: 320, width: "auto", display: "block", margin: "0 auto"
               }} />
             </div>
           </div>
