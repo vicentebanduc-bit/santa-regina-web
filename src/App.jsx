@@ -220,11 +220,12 @@ function PageInicio() {
           <div style={{ opacity: loaded ? 1 : 0, transform: loaded ? "translateY(0)" : "translateY(20px)", transition: "all 1s cubic-bezier(0.16,1,0.3,1) 0.2s" }}>
             <div style={{ margin: "0 auto 40px", display: "flex", alignItems: "center", justifyContent: "center" }}>
               <div style={{
-                width: 220, height: 220, borderRadius: "50%",
+                width: 224, height: 224, borderRadius: "50%",
                 background: "#ffffff",
                 boxShadow: "0 4px 32px rgba(0,0,0,0.3), 0 0 0 1.5px rgba(107,158,206,0.25)",
                 display: "flex", alignItems: "center", justifyContent: "center",
-                padding: 18, flexShrink: 0, overflow: "hidden"
+                paddingTop: 26, paddingBottom: 10, paddingLeft: 18, paddingRight: 18,
+                flexShrink: 0, overflow: "hidden"
               }}>
                 <img src="/InversionesSantaRegina.jpeg" alt="Inversiones Santa Regina" style={{
                   width: "100%", height: "100%", objectFit: "contain", display: "block"
