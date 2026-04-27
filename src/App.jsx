@@ -162,19 +162,21 @@ function CtaBand() {
 const AREAS = [
   { tag: "Mercado de capitales", title: "Inversiones Financieras", desc: "Mercado de capitales, renta fija e inversiones alternativas locales y extranjeras.", accent: ACCENT, href: null },
   { tag: "Inmobiliario", title: "Portafolio Inmobiliario", desc: "Centros de bodegaje, activos industriales build to suit y locales comerciales.", accent: "#5FA37A", href: null },
-  { tag: "Operaciones", title: "Negocios Reales", desc: "Rubro de transporte, logística y comercialización.", accent: "#8B7EC2", href: "https://www.transportesnazar.cl/" },
+  { tag: "Operaciones", title: "Negocios Reales", desc: "Rubro de transporte, logística y comercialización.", accent: "#8B7EC2", links: [{ label: "Transportes Nazar", href: "https://www.transportesnazar.cl/" }, { label: "Key Logistics", href: "http://keylogistics.cl" }, { label: "Key Foods", href: "http://keyfoods.cl" }] },
   { tag: "Inversión directa", title: "Negocios Directos", desc: "Deuda privada originada in house, coinversiones inmobiliarias, venture capital y otros.", accent: "#C2845B", href: null },
 ];
 
 function AreasGrid({ clickable }) {
   const { go } = useContext(RouterCtx);
+  const [openLinks, setOpenLinks] = useState(null);
   return (
     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 24 }}>
       {AREAS.map((s, i) => (
         <FadeIn key={i} delay={i * 0.1}>
-          <div style={{ background: "#fff", padding: 36, border: "1px solid rgba(0,0,0,0.06)", transition: "all 0.3s", cursor: (clickable && s.href) ? "pointer" : (clickable ? "pointer" : "default"), height: "100%", position: "relative", overflow: "hidden" }}
+          <div style={{ background: "#fff", padding: 36, border: "1px solid rgba(0,0,0,0.06)", transition: "all 0.3s", cursor: (clickable && (s.href || s.links)) ? "pointer" : (clickable ? "pointer" : "default"), height: "100%", position: "relative", overflow: "hidden" }}
             onClick={() => {
-              if (s.href) { window.open(s.href, "_blank", "noopener,noreferrer"); }
+              if (s.links) { setOpenLinks(openLinks === i ? null : i); }
+              else if (s.href) { window.open(s.href, "_blank", "noopener,noreferrer"); }
               else if (clickable) { go("servicios"); }
             }}
             onMouseEnter={e => { e.currentTarget.style.borderColor = `${AL}0.3)`; if (clickable) e.currentTarget.style.transform = "translateY(-4px)"; }}
@@ -183,9 +185,22 @@ function AreasGrid({ clickable }) {
             <div style={{ fontSize: 10, letterSpacing: 3, textTransform: "uppercase", color: s.accent, marginBottom: 16, fontFamily: "'DM Sans', sans-serif" }}>{s.tag}</div>
             <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 24, fontWeight: 500, color: "#0A0F1C", margin: "0 0 12px" }}>{s.title}</h3>
             <p style={{ fontSize: 14, color: "#888", lineHeight: 1.8, fontFamily: "'DM Sans', sans-serif", fontWeight: 300, margin: 0 }}>{s.desc}</p>
+            {clickable && openLinks === i && s.links && (
+              <div style={{ marginTop: 16, paddingTop: 12, borderTop: `1px solid rgba(139,126,194,0.15)` }}>
+                {s.links.map((link, j) => (
+                  <div key={j} onClick={e => { e.stopPropagation(); window.open(link.href, "_blank", "noopener,noreferrer"); }}
+                    style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10, cursor: "pointer", padding: "4px 0" }}
+                    onMouseEnter={e => e.currentTarget.querySelector("span").style.color = s.accent}
+                    onMouseLeave={e => e.currentTarget.querySelector("span").style.color = "#555"}>
+                    <div style={{ width: 4, height: 4, borderRadius: "50%", background: s.accent, flexShrink: 0 }} />
+                    <span style={{ fontSize: 13, color: "#555", fontFamily: "'DM Sans', sans-serif", fontWeight: 400, transition: "color 0.2s" }}>{link.label}</span>
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke={s.accent} strokeWidth="2"><path d="M7 17L17 7" /><path d="M7 7h10v10" /></svg>
+                  </div>
+                ))}
+              </div>
+            )}
             {clickable && <span style={{ display: "inline-flex", alignItems: "center", gap: 6, marginTop: 16, fontSize: 12, letterSpacing: 1.5, textTransform: "uppercase", color: ACCENT, fontFamily: "'DM Sans', sans-serif", fontWeight: 500 }}>
-              Ver más {s.href && <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 17L17 7" /><path d="M7 7h10v10" /></svg>}
-              {!s.href && "→"}
+              {s.links ? (openLinks === i ? "Ocultar ↑" : <>Ver más <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 17L17 7" /><path d="M7 7h10v10" /></svg></>) : s.href ? <>Ver más <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 17L17 7" /><path d="M7 7h10v10" /></svg></> : "→"}
             </span>}
           </div>
         </FadeIn>
@@ -350,7 +365,7 @@ function PageServicios() {
     },
     {
       tag: "Operaciones", title: "Negocios Reales", desc: "Rubro de transporte, logística y comercialización.", accent: "#8B7EC2",
-      href: "https://www.transportesnazar.cl/",
+      links: [{ label: "Transportes Nazar", href: "https://www.transportesnazar.cl/" }, { label: "Key Logistics", href: "http://keylogistics.cl" }, { label: "Key Foods", href: "http://keyfoods.cl" }],
     },
     {
       tag: "Inversión directa", title: "Negocios Directos", desc: "Deuda privada originada in house, coinversiones inmobiliarias, venture capital y otros.", accent: "#C2845B",
@@ -368,7 +383,8 @@ function PageServicios() {
               <FadeIn key={i} delay={i * 0.1}>
                 <div style={{ background: "#fff", padding: 40, border: "1px solid rgba(0,0,0,0.06)", height: "100%", display: "flex", flexDirection: "column", position: "relative", overflow: "hidden", transition: "all 0.3s", cursor: "pointer" }}
                   onClick={() => {
-                    if (s.href) { window.open(s.href, "_blank", "noopener,noreferrer"); }
+                    if (s.links) { setExpanded(expanded === i ? null : i); }
+                    else if (s.href) { window.open(s.href, "_blank", "noopener,noreferrer"); }
                     else if (s.goTo) { go(s.goTo); }
                     else { setExpanded(expanded === i ? null : i); }
                   }}
@@ -389,8 +405,23 @@ function PageServicios() {
                       ))}
                     </div>
                   )}
+                  {/* Expandable links */}
+                  {s.links && expanded === i && (
+                    <div style={{ marginTop: 20, paddingTop: 16, borderTop: `1px solid ${AL}0.1)` }}>
+                      {s.links.map((link, j) => (
+                        <div key={j} onClick={e => { e.stopPropagation(); window.open(link.href, "_blank", "noopener,noreferrer"); }}
+                          style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10, cursor: "pointer", padding: "4px 0" }}
+                          onMouseEnter={e => e.currentTarget.querySelector("span").style.color = s.accent}
+                          onMouseLeave={e => e.currentTarget.querySelector("span").style.color = "#555"}>
+                          <div style={{ width: 4, height: 4, borderRadius: "50%", background: s.accent, flexShrink: 0 }} />
+                          <span style={{ fontSize: 13, color: "#555", fontFamily: "'DM Sans', sans-serif", fontWeight: 400, transition: "color 0.2s" }}>{link.label}</span>
+                          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke={s.accent} strokeWidth="2"><path d="M7 17L17 7" /><path d="M7 7h10v10" /></svg>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                   <span style={{ display: "inline-flex", alignItems: "center", gap: 6, marginTop: 20, fontSize: 12, letterSpacing: 1.5, textTransform: "uppercase", color: s.accent, fontFamily: "'DM Sans', sans-serif", fontWeight: 500 }}>
-                    {s.href ? <>Ver más <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 17L17 7" /><path d="M7 7h10v10" /></svg></> : s.goTo ? "Ver arriendos →" : (expanded === i ? "Ocultar ↑" : "Ver más →")}
+                    {s.href ? <>Ver más <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 17L17 7" /><path d="M7 7h10v10" /></svg></> : s.links ? (expanded === i ? "Ocultar ↑" : "Ver más →") : s.goTo ? "Ver arriendos →" : (expanded === i ? "Ocultar ↑" : "Ver más →")}
                   </span>
                 </div>
               </FadeIn>
