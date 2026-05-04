@@ -162,7 +162,7 @@ function CtaBand() {
 const AREAS = [
   { tag: "Mercado de capitales", title: "Inversiones Financieras", desc: "Mercado de capitales, renta fija e inversiones alternativas locales y extranjeras.", accent: ACCENT, href: null },
   { tag: "Inmobiliario", title: "Portafolio Inmobiliario", desc: "Centros de bodegaje, activos industriales build to suit y locales comerciales.", accent: "#5FA37A", href: null },
-  { tag: "Operaciones", title: "Negocios Reales", desc: "Rubro de transporte, logística y comercialización.", accent: "#8B7EC2", links: [{ label: "Transportes Nazar", href: "https://www.transportesnazar.cl/" }, { label: "Key Logistics", href: "https://www.keylogistics.cl/" }, { label: "Key Foods", href: "http://keyfoods.cl" }] },
+  { tag: "Operaciones", title: "Negocios Reales", desc: "Rubro de transporte, logística y comercialización.", accent: "#8B7EC2", links: [{ label: "Transportes Nazar", href: "https://www.transportesnazar.cl/" }, { label: "Keylogistics", href: "https://www.keylogistics.cl/" }, { label: "PDQ", href: "https://www.pdq.cl/" }, { label: "Keyfoods", href: "http://keyfoods.cl" }] },
   { tag: "Inversión directa", title: "Negocios Directos", desc: "Deuda privada originada in house, coinversiones inmobiliarias, venture capital y otros.", accent: "#C2845B", href: null },
 ];
 
@@ -365,7 +365,7 @@ function PageServicios() {
     },
     {
       tag: "Operaciones", title: "Negocios Reales", desc: "Rubro de transporte, logística y comercialización.", accent: "#8B7EC2",
-      links: [{ label: "Transportes Nazar", href: "https://www.transportesnazar.cl/" }, { label: "Key Logistics", href: "https://www.keylogistics.cl/" }, { label: "Key Foods", href: "http://keyfoods.cl" }],
+      links: [{ label: "Transportes Nazar", href: "https://www.transportesnazar.cl/" }, { label: "Keylogistics", href: "https://www.keylogistics.cl/" }, { label: "PDQ", href: "https://www.pdq.cl/" }, { label: "Keyfoods", href: "http://keyfoods.cl" }],
     },
     {
       tag: "Inversión directa", title: "Negocios Directos", desc: "Deuda privada originada in house, coinversiones inmobiliarias, venture capital y otros.", accent: "#C2845B",
